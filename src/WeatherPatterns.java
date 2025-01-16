@@ -20,16 +20,21 @@ public class WeatherPatterns {
         // TODO: Write your code here!
         int length = temperatures.length;
 
-        int[] lengths = new int[length];
-        Arrays.fill(lengths, 1);
+        int[] runs = new int[length];
+        Arrays.fill(runs, 1);
 
         for (int i = 1; i < length; i++) {
             for (int j = 0; j < i; j++) {
                 if (temperatures[i] > temperatures[j])
-                    lengths[i] = Math.max(lengths[i], lengths[j] + 1);
+                    runs[i] = Math.max(runs[i], runs[j] + 1);
             }
         }
 
-        return 0;
+        int maxRun = 0;
+        for (int run : runs) {
+            maxRun = Math.max(maxRun, run);
+        }
+
+        return maxRun;
     }
 }
