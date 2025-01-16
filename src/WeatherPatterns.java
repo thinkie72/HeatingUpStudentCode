@@ -26,12 +26,12 @@ public class WeatherPatterns {
         int maxRun = 1;
 
         for (int i = 1; i < length; i++) {
-            for (int j = 0; j < i; j++) {
-                if (temperatures[i] > temperatures[j])
+            for (int j = i - 1; j >= 0; j--) {
+                if (temperatures[i] > temperatures[j]) {
                     runs[i] = Math.max(runs[i], runs[j] + 1);
+                    maxRun = Math.max(maxRun, runs[i]);
+                }
             }
-
-            maxRun = Math.max(maxRun, runs[i]);
         }
 
         return maxRun;
